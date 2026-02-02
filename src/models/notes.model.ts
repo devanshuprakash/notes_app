@@ -1,15 +1,15 @@
-import {Schema,model,Document} from "mongoose"
-
-export interface NoteDocument extends Document{
-  title:string
-  content:string
-  updatedAt:Date
-}
-
-const NoteSchema=new Schema<NoteDocument>({
-  title:{type:String,required:true},
-  content:{type:String,required:true},
-  updatedAt:{type:Date,default:Date.now}
+import {model,Schema} from "mongoose"
+import {NoteDocument,NoteModelInterface} from "../utils/notes.interface"
+const noteSchema=new Schema({
+  title:{
+    type:String
+  },
+  content:{
+    type:String
+  }
 })
-
-export const Note=model<NoteDocument>("Note",NoteSchema)
+const NoteModel=model<NoteDocument,NoteModelInterface>(
+  "Note",
+  noteSchema
+)
+export default NoteModel;

@@ -19,7 +19,8 @@
   "homepage": "https://github.com/devanshuprakash/notes_app#readme",
   "dependencies": {
     "dotenv": "^17.2.3",
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "mongoose": "^9.1.5"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",

@@ -1,8 +1,7 @@
-import app from "./app"
-import NoteRoutes from "./routes/note.routes"
+import App from "./app"
+import NoteRoutes from "./routes/notes.route"
 import "dotenv/config"
-
-const app=new app([
+const app=new App([
   new NoteRoutes()
 ])
 
