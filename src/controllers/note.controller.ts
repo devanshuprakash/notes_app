@@ -30,6 +30,61 @@ if(!content||typeof content!=="string"){
       console.error(err)
     return res.status(500).json({message:"Failed to create note"})
 }
-  }
 }
-export default NoteController;
+
+public updateNote=async function(req:Request,res:Response){
+   try{
+     const {id}=req.params
+     const {title,content}=req.body
+
+     if(title!==undefined && typeof title!=="string"){
+       return res.status(400).json({
+         message:"title must be a string"
+       })
+     }
+
+     if(content!==undefined && typeof content!=="string"){
+       return res.status(400).json({
+         message:"content must be a string"
+       })
+     }
+
+     const note=await NoteModel.findByIdAndUpdate(
+       id,
+       {title,content},
+       {new:true}
+     )
+
+     if(!note){
+       return res.status(404).json({message:"Note not found"})
+     }
+
+     return res.status(200).json(note)
+   }catch(err){
+     console.error(err)
+     return res.status(500).json({message:"Failed to update note"})
+   }
+ }
+
+ public deleteNote=async function(req:Request,res:Response){
+   try{
+     const {id}=req.params
+
+     const note=await NoteModel.findByIdAndDelete(id)
+
+     if(!note){
+       return res.status(404).json({message:"Note not found"})
+     }
+
+     return res.status(200).json({message:"Note deleted successfully"})
+   }catch(err){
+     console.error(err)
+     return res.status(500).json({message:"Failed to delete note"})
+   }
+ }
+
+}
+
+
+
+ export default NoteController;

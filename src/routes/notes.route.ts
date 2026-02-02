@@ -11,6 +11,27 @@ class NoteRoutes implements Routes{
   private initializeRoutes(){
     this.router.get(`${this.path}/allNotes`,this.noteController.getNotes)
     this.router.post(`${this.path}/add`,this.noteController.postNotes)
+    this.router.get(
+    `${this.path}/allNotes`,
+    this.noteController.getNotes
+  )
+
+  this.router.post(
+    `${this.path}/add`,
+    this.noteController.postNotes
+  )
+
+  this.router.put(
+    `${this.path}/update/:id`,
+    this.noteController.updateNote
+  )
+
+  this.router.delete(
+    `${this.path}/delete/:id`,
+    this.noteController.deleteNote
+  )
   }}
+ 
+
 
 export default NoteRoutes;
