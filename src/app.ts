@@ -1,6 +1,6 @@
 import express from "express";
-import { Routes } from "./utils/route.Interface";
-import { connect } from "mongoose";
+// import { Routes } from "./utils/route.Interface";
+// import { connect } from "mongoose";
 
 class app {
   public app: express.Application;
